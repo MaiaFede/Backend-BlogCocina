@@ -54,3 +54,19 @@ export const editarReceta = async(req, res) => {
      res.status(500).json({mensaje:'Error al editar las recetas'})
     }
    };
+
+   export const borrarReceta = async(req, res) => {
+    try {
+    
+     const recetaBuscada = await Receta.findById(req.params.id)
+    
+     if (!recetaBuscada){
+        return res.status(404).json({mensaje:"El id enviado NO corresponde a ninguna de las recetas"})
+     }
+    await Receta.findByIdAndDelete(req.params.id)
+    res.status(200).json({mensaje:" La receta fue borrada correctamente"})
+    } catch (err) {
+     console.error(err);
+     res.status(500).json({mensaje:'Error al borrar las recetas'})
+    }
+   };
