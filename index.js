@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import morgan from "morgan";
+import recetaRouter from "./src/routes/receta.routes.js"
 
 const app = express();
 app.set('port', process.env.PORT || 4000);
@@ -14,3 +15,4 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+app.use("/api", recetaRouter)
