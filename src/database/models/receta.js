@@ -24,11 +24,11 @@ const recetaSchema = new Schema({
         enum: ['Nuevo', 'Batidos','Dulce', 'Salado']
     },
     ingredientes:{
-        type:String,
+        type:[String],
         required:true
     },
     instrucciones:{
-        type:String,
+        type:[String],
         required:true,
         minLength:10,
         maxLength:500
@@ -38,4 +38,4 @@ const recetaSchema = new Schema({
 
 const Receta = mongoose.model('receta', recetaSchema);
 
-export default Producto;
+export default Receta;
